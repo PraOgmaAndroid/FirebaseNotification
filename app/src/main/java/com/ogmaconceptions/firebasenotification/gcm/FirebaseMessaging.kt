@@ -11,62 +11,61 @@ import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.ogmaconceptions.firebasenotification.R
-import com.ogmaconceptions.firebasenotification.ui.NotificationSplashActivity
 import java.util.*
 
 class FirebaseMessaging: FirebaseMessagingService() {
 
     private lateinit var title: String
     private lateinit var message: String
-    private lateinit var flag: String
     private lateinit var imageUrl: String
+    private lateinit var click_action: String
     private lateinit var pendingIntent: PendingIntent
-    private val notificationChannelID : String = "10001"
+    private val notificationChannelID: String = "10001"
 
-    override fun onNewToken(p0: String) {
-        super.onNewToken(p0)
-        Log.e("FCMTOKEN",p0)
+    override fun onNewToken(token: String) {
+        super.onNewToken(token)
+        Log.e("FCMTOKEN", token)
     }
 
     override fun onMessageReceived(p0: RemoteMessage) {
-        Log.e("PRINT","${p0.data}")
+        //Log.e("PRINT","${p0.data}")
 
-        p0.notification?.let {
+        /*p0.notification?.let {
             Log.e("TAG", "Notification Title: ${it.title}")
             Log.e("TAG", "Notification Body: ${it.body}")
 
-            /*val intent = Intent(this, Splash::class.java)
+            *//*val intent = Intent(this, Splash::class.java)
             it.title?.let { it1 ->
                 it.body?.let { it2 ->
                     sendNotification(it1, it2, intent)
                 }
-            }*/
-        }
+            }*//*
+        }*/
 
-        if(p0.data.isNotEmpty()){
+        if (p0.data.isNotEmpty()) {
             title = p0.data["title"].toString()
             message = p0.data["message"].toString()
-            flag = p0.data["flag"].toString()
             imageUrl = p0.data["path"].toString()
-            Log.e("PRINT","receiving data $flag")
-            sendnotificationWithImage(title,message,flag,imageUrl)
+            click_action =
+                "com.ogmaconceptions.firebasenotification_${p0.data["click_action"].toString()}"
 
+            Log.e("PRINT", click_action)
+
+            sendnotificationWithImage(title, message, imageUrl)
         }
 
     }
 
-    private fun sendnotificationWithImage(title: String, message: String,flag: String, imageUrl: String) {
-
-        Log.e("PRINT","Notification received flag:- $flag")
+    private fun sendnotificationWithImage(title: String, message: String, imageUrl: String) {
 
         val notificationId = Random().nextInt(60000)
 
-        Intent(this, NotificationSplashActivity::class.java).apply {
+        Intent(click_action).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            putExtra("title",title)
-            putExtra("message",message)
-            putExtra("path",imageUrl)
-            putExtra("flag",flag)
+            putExtra("title", title)
+            putExtra("message", message)
+            //Log.e("PRINTURINTENTACTIONCLICKL",imageUrl)
+            putExtra("path", imageUrl)
         }.also {
             pendingIntent = PendingIntent.getActivity(
                 this, 0, it,0)

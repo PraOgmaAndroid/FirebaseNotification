@@ -13,7 +13,7 @@ import com.google.firebase.messaging.RemoteMessage
 import com.ogmaconceptions.firebasenotification.R
 import java.util.*
 
-class FirebaseMessaging: FirebaseMessagingService() {
+class FCMMessaging : FirebaseMessagingService() {
 
     private lateinit var title: String
     private lateinit var message: String

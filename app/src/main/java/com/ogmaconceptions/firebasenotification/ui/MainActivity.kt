@@ -1,9 +1,7 @@
 package com.ogmaconceptions.firebasenotification.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.ogmaconceptions.firebasenotification.R
+import androidx.appcompat.app.AppCompatActivity
 import com.ogmaconceptions.firebasenotification.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

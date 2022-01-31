@@ -37,7 +37,7 @@
         </activity>
 
         <service
-            android:name=".gcm.FirebaseMessaging"
+            android:name=".gcm.FCMMessaging"
             android:exported="false"
             android:stopWithTask="false">
             <intent-filter>

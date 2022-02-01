@@ -16,6 +16,8 @@ class NotificationSplashActivity : AppCompatActivity() {
         splashBinding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(splashBinding.root)
 
+        Log.e("CHECK", "${intent.getStringExtra("OPENACTIVITY")}")
+
         FirebaseMessaging.getInstance().token.addOnCompleteListener(
             OnCompleteListener { task ->
                 if (!task.isSuccessful) {

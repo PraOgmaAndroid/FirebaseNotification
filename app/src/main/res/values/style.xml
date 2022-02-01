@@ -15,12 +15,15 @@
         <item name="android:textColor">@color/purple_700</item>
     </style>
 
+    <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.MaterialComponents">
+        <item name="shapeAppearance">@style/Widget.SmallComponent.Image</item>
+    </style>
+
 
     <style name="Widget.SmallComponent.Image" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">25%</item>
     </style>
-
 
 
 </resources>

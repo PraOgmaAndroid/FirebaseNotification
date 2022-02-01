@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FirebaseNotification</string>
+    <string name="accept">ACCEPT</string>
+    <string name="cancel">DENY</string>
+    <string name="title">Broadcast Receiver</string>
+    <string name="message">Dialog opened on notification received using broadcast receiver</string>
 </resources>

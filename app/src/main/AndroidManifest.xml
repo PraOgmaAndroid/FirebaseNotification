@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirebaseNotification">
         <activity
+            android:name=".ui.DialogActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.DayNight.Dialog" />
+        <activity
             android:name=".ui.NotificationSplashActivity"
             android:exported="true">
             <intent-filter>
@@ -23,15 +28,16 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="com.ogmaconceptions.firebasenotification_PICTURE" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.ogmaconceptions.firebasenotification_NO_PICTURE" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
